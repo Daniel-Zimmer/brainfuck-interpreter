@@ -1,12 +1,19 @@
 local code = ""
-local t = {0,0,0,0,0,0,0,0,0,0,0}
 local tpos = 1
-local loopTemp = {0,0,0,0,0,0,0,0,0,0,0}
-local loopTempPos = {0,0,0,0,0,0,0,0,0,0,0}
 local loopDepth = 0
-local stepDisplaySize = 6
+local stepDisplaySize = 20
 local stepDisplay = false
+
 local i = 1
+local t = {}
+local loopTemp = {}
+local loopTempPos = {}
+
+for j = 1, 30000 do
+  t[j] = 0
+  loopTemp[j] = 0
+  loopTempPos[j] = 0
+end
 
 function fileload(filename)
   local file = io.open(filename)
@@ -18,7 +25,7 @@ function fileload(filename)
   return str
 end
 
-io.write("Nome do arquivo: ")
+io.write("\nNome do arquivo: ")
 local filename = io.read() .. ".txt"
 
 code = fileload(filename)
@@ -49,7 +56,7 @@ while (i <= #code) do
     end
     
     if stepDisplay then
-      io.write("\n"..i.." "..loopDepth.."\n--------------------------------\n")
+      io.write("\n"..i.." "..loopDepth.."\n-------------------------------------------------------------------------------------------\n")
       for j = 1, stepDisplaySize do
         if j == tpos then
           io.write("| ! ")
@@ -57,11 +64,11 @@ while (i <= #code) do
           io.write("| "..j.." ")
         end
       end
-      io.write("\n--------------------------------\n")
+      io.write("\n-------------------------------------------------------------------------------------------\n")
       for j = 1, stepDisplaySize do
         io.write("| "..t[j].." ")
       end
-      io.write("\n--------------------------------\n")
+      io.write("\n-------------------------------------------------------------------------------------------\n")
     
     end
     
