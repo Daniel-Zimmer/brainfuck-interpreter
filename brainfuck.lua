@@ -1,12 +1,11 @@
 local code = ""
-local filename = "code.txt"
 local t = {0,0,0,0,0,0,0,0,0,0,0}
 local tpos = 1
 local loopTemp = {0,0,0,0,0,0,0,0,0,0,0}
 local loopTempPos = {0,0,0,0,0,0,0,0,0,0,0}
 local loopDepth = 0
 local stepDisplaySize = 6
-local stepDisplay = true
+local stepDisplay = false
 local i = 1
 
 function fileload(filename)
@@ -19,6 +18,8 @@ function fileload(filename)
   return str
 end
 
+io.write("Nome do arquivo: ")
+local filename = io.read() .. ".txt"
 
 code = fileload(filename)
 
